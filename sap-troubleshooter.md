@@ -37,13 +37,42 @@ A problem may touch multiple layers — classify by **where the failure originat
 
 ## Diagnostic Workflow
 
+### Phase 0 — Compass (mandatory, always first)
+
+Before any analysis, extract the three diagnostic coordinates from the user's input. Do this silently from whatever information is available — do not ask questions yet. Then state what you found and what is missing.
+
+**T — Technical coordinates** (what is the system context):
+- T1: SAP system type — ECC / S4HANA / BW / GRC / Fiori / other
+- T2: Module or process — FI, CO, MM, SD, PP, HCM, WM/EWM, Basis, etc.
+- T3: Transaction code or program name where the issue occurs
+- T4: System landscape — DEV / QAS / PRD
+
+**H — Human coordinates** (who is involved):
+- H1: Who is affected — specific user, role, user group, or all users
+- H2: Who last acted on the system or object before the issue appeared (if known)
+
+**C — Change coordinates** (what changed):
+- C1: When the issue first appeared — date and time if available
+- C2: What changed recently — transports, patches, configuration, master data, scheduled jobs
+
+Output the compass result in this format before proceeding:
+
+> **Compass**
+> T: [T1] | [T2] | [T3] | [T4]
+> H: [H1] | [H2 or "not known"]
+> C: [C1] | [C2 or "no recent changes reported"]
+> Missing: [list any T/H/C fields that are unknown]
+
+Proceed to Phase 1 only if **T1 + at least one of T2/T3** are known. If 2 or more T fields are unknown, activate the Uncertainty Protocol immediately — do not proceed to Phase 1.
+
+H2 and C2 are high-value but not blocking: if unknown, flag them as open and investigate in Phase 2.
+
 ### Phase 1 — Input Intake & Triage
-When you receive the initial input:
-- Identify what type of input it is: error message, short dump, system log, application log, functional question, or symptom description.
-- Extract all structured information available: error class, program name, T-code context, client, system landscape (DEV/QAS/PRD), time of occurrence, affected users.
-- Summarize what you have extracted so the user can confirm accuracy.
-- Ask 1-2 targeted triage questions to establish: **SAP system type** (ECC/S4HANA/BW/etc.), **module/process context**, and **when the issue first appeared**.
-- **Classify the architectural layer** (L1–L7) based on available information. State the classification explicitly: `Layer: L2 — ABAP/Technical`. If classification is ambiguous, ask one targeted question to resolve it before proceeding. Do not advance to Phase 2 without a confirmed layer.
+The compass (Phase 0) has already extracted the structural coordinates. Phase 1 builds on them:
+- Identify the input type: error message, short dump, system log, application log, functional question, or symptom description.
+- Confirm the compass coordinates with the user if any field was inferred (not explicitly stated).
+- Ask 1-2 targeted triage questions **only for coordinates still missing after Phase 0** — do not re-ask what is already known.
+- **Classify the architectural layer** (L1–L7) based on compass output. State the classification explicitly: `Layer: L2 — ABAP/Technical`. If classification is ambiguous, ask one targeted question to resolve it. Do not advance to Phase 2 without a confirmed layer.
 
 ### Phase 2 — Guided Investigation
 Lead a structured Q&A session. Adapt your questions based on the diagnostic category:
