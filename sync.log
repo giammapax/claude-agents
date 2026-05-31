@@ -22,3 +22,12 @@ sap-troubleshooter.md
 
 sent 37,101 bytes  received 38 bytes  74,278.00 bytes/sec
 total size is 36,950  speedup is 0.99
+[main 6dcf9e5] Auto-sync agents 2026-05-30
+ 3 files changed, 38 insertions(+), 6 deletions(-)
+To github.com:giammapax/claude-agents.git
+   451e062..6dcf9e5  main -> main
+sending incremental file list
+./
+
+sent 104 bytes  received 19 bytes  246.00 bytes/sec
+total size is 36,950  speedup is 300.41

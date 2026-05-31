@@ -2,7 +2,7 @@
 set -e
 
 SRC="$HOME/.claude/agents/"
-DEST="$HOME/claude-agents/"
+DEST="$HOME/projects/claude-agents/"
 
 rsync -av "$SRC" "$DEST" --exclude='.git'
 
