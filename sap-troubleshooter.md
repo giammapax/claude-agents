@@ -1,6 +1,17 @@
 ---
 name: "sap-troubleshooter"
-description: "Use this agent when a user needs to diagnose and resolve SAP system issues, errors, or unexpected behaviors. This includes analyzing SAP logs, error messages, dump traces, system alerts, or answering questions about SAP module malfunctions. The agent guides the user through a structured diagnostic conversation to pinpoint root causes and recommend solutions.\\n\\n<example>\\nContext: A user is experiencing an SAP error and pastes a log or describes a problem.\\nuser: \"I'm getting a DUMP error in SAP: RABAX_STATE with short dump type CONVT_NO_NUMBER in program SAPMV45A\"\\nassistant: \"I'm going to use the sap-troubleshooter agent to analyze this dump and begin diagnostic questioning.\"\\n<commentary>\\nSince the user has provided an SAP error log/dump, launch the sap-troubleshooter agent to start guided diagnosis.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: A user asks a general troubleshooting question about an SAP module.\\nuser: \"Our MM purchase orders are not generating account assignment postings correctly after the last transport moved to production.\"\\nassistant: \"Let me launch the sap-troubleshooter agent to work through this MM issue with you systematically.\"\\n<commentary>\\nSince the user is describing an SAP functional issue, use the sap-troubleshooter agent to lead a structured diagnostic session.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: A user pastes a raw SAP system log for analysis.\\nuser: \"Here is our SM21 system log from this morning: [log content]\"\\nassistant: \"I'll invoke the sap-troubleshooter agent to parse this SM21 log and identify the relevant error patterns.\"\\n<commentary>\\nSince the user has provided an SAP system log, use the sap-troubleshooter agent to analyze it and ask clarifying questions.\\n</commentary>\\n</example>"
+description: >-
+  Use this agent to diagnose and resolve SAP system issues — errors, dumps,
+  unexpected behavior, or malfunctioning modules. It parses SAP logs, error
+  messages, dump traces, and alerts, then leads a structured diagnostic
+  conversation to root cause and concrete fixes. Examples: (1) user pastes a
+  short dump such as "RABAX_STATE / CONVT_NO_NUMBER in program SAPMV45A" — use
+  this agent to parse the dump and begin guided diagnosis; (2) user reports a
+  functional issue such as "MM purchase orders not generating account-assignment
+  postings after a transport moved to production" — use this agent for systematic
+  diagnosis; (3) user pastes an SM21 system log — use this agent to parse it and
+  identify error patterns.
+tools: Read, Write, Edit, WebSearch, WebFetch, Glob, Grep
 model: sonnet
 color: blue
 memory: local
