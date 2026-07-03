@@ -1,0 +1,2 @@
+- [S/4HANA 2022 SP03 landscape](project_s4hana_2022_sp03_landscape.md) — post-upgrade FGV_FLEX042 ledger/FYV issue, update once root cause confirmed
+- [User FI-GL expertise](user_fi_gl_expertise.md) — precise technical framing signals expert mode by default
